@@ -36,7 +36,7 @@ class  Program
 
 class Perceptron
 {
-    private double[] weights = { 0.5, 0.2, 0.5, 1 };
+    private double[] weights = { 1, 1, 0, 1 };
     private double threshold = 4;
     private double alpha;
     private double beta;
@@ -57,4 +57,31 @@ class Perceptron
         
         return scalar > threshold;
     }
+
+    public void learn(int[] vector, bool prediction)
+    {
+        while (classify(vector) != prediction)
+        {
+            Console.WriteLine("Learning...");
+            delta_rule(vector, prediction);
+        }
+    }
+
+    public void delta_rule(int[] vector, bool prediction)
+    {
+        double a = alpha;
+        if (!prediction)
+        {
+            a *= -1;
+        }
+        threshold -= beta;
+
+        for (int i = 0; i < vector.Length; i++)
+        {
+            weights[i] = weights[i] + a * vector.ElementAt(i);
+        }
+    }
+    
+    
+    
 }
