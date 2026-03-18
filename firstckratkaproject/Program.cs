@@ -1,6 +1,17 @@
 ﻿namespace FIrstCKratkaProjectt;
 class  Program
 {
+
+    double CalculateAverage(int[] values)
+    {
+        double sum = 0;
+        for(int i = 0; i < values.Length; i++)
+            {
+            sum += values[i];
+            }
+        return sum / values.Length;
+    }
+    
     static void Main(string[] args)
     {
         Console.WriteLine("Hi! ^^");
