@@ -11,6 +11,11 @@ class  Program
             }
         return sum / values.Length;
     }
+
+    double CalculateMax(int[] values)
+    {
+        return values.Max();
+    }
     
     static void Main(string[] args)
     {
