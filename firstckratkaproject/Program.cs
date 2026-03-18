@@ -14,6 +14,7 @@ class  Program
 
     double CalculateMax(int[] values)
     {
+        Console.WriteLine("Calculating max value...");
         return values.Max();
     }
     
