@@ -44,7 +44,7 @@ class  Program
                 i--;
             }
         }
-        Console.WriteLine(string.Join(", ", vector));
+        
         Console.WriteLine("Choose a mode: ");
         Console.WriteLine("1) Classify the vector");
         Console.WriteLine("2) Teach the perceptron");
