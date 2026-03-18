@@ -22,15 +22,53 @@ class  Program
             }
         }
         Console.WriteLine(string.Join(", ", vector));
+        Console.WriteLine("Choose a mode: ");
+        Console.WriteLine("1) Classify the vector");
+        Console.WriteLine("2) Teach the perceptron");
         Perceptron per = new Perceptron(0.2, 0.2);
-        if (per.classify(vector))
-        {
-            Console.WriteLine("Perceptron activated!");
-        }
+        
+        if (int.TryParse(Console.ReadLine(), out int choice) && choice == 1  || choice == 2)
+            {
+                switch (choice)
+                {
+                    case 1:
+                        if (per.classify(vector))
+                        {
+                            Console.WriteLine("Perceptron activated!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Perceptron not activated!");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Please provide the correct answer: ");
+                        if (int.TryParse(Console.ReadLine(), out int answer) && answer == 1 || answer == 0)
+                        {
+                            if (answer == 1)
+                            {
+                                per.learn(vector, true);
+                            }
+                            else
+                            {
+                                per.learn(vector, false);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please provide the correct answer.");
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
         else
         {
-            Console.WriteLine("Perceptron not activated!");
+            Console.WriteLine("Please choose a mode.");
         }
+        
+        
     }
 }
 
@@ -65,6 +103,8 @@ class Perceptron
             Console.WriteLine("Learning...");
             delta_rule(vector, prediction);
         }
+
+        Console.WriteLine("The answer matched the perceptron's classification");
     }
 
     public void delta_rule(int[] vector, bool prediction)
@@ -74,12 +114,20 @@ class Perceptron
         {
             a *= -1;
         }
+
+        Console.WriteLine("Old threshold: " + threshold);
         threshold -= beta;
+        Console.WriteLine("New threshold: " + threshold + "\n");
+        Console.WriteLine("Old weights:");
+        Console.WriteLine(string.Join(", ", weights));
 
         for (int i = 0; i < vector.Length; i++)
         {
             weights[i] = weights[i] + a * vector.ElementAt(i);
         }
+        
+        Console.WriteLine("New weights:");
+        Console.WriteLine(string.Join(", ", weights) + "\n");
     }
     
     
