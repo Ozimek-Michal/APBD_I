@@ -20,6 +20,7 @@ class  Program
 
     double CalculateMin(int[] values)
     {
+        Console.WriteLine("Calculating min value...");
         return values.Min();
     }
     
