@@ -17,6 +17,11 @@ class  Program
         Console.WriteLine("Calculating max value...");
         return values.Max();
     }
+
+    double CalculateMin(int[] values)
+    {
+        return values.Min();
+    }
     
     static void Main(string[] args)
     {
